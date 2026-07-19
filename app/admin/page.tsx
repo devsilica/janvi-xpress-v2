@@ -222,8 +222,7 @@ async function refresh() {
 
   setRequests((data ?? []) as ShippingRequest[]);
 }
-setRequests((data ?? []) as ShippingRequest[]);
-}
+
 
 async function updateStatus(id: string, status: string) {
 setRequests((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
