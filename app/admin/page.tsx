@@ -149,9 +149,13 @@ return;
 }
 
 const { data, error } = await supabase
-.from("shipping_requests")
-.select("id,full_name,phone,pickup_location,destination_country,package_type,status,reference_code,created_at")
-.order("created_at", { ascending: false });
+  .from("shipping_requests")
+  .select("*")
+  .order("created_at", { ascending: false });
+
+console.log("Fetched rows:", data);
+console.log("Error:", error);
+console.log("Count:", data?.length);
 
 if (cancelled) return;
 
