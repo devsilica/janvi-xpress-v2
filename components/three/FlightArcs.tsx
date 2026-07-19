@@ -3,8 +3,10 @@
 import { Line } from "@react-three/drei";
 import { useMemo } from "react";
 
+type Point3 = [number, number, number];
+
 export default function FlightArcs() {
-  const arcs = useMemo(
+  const arcs = useMemo<Point3[][]>(
     () => [
       [
         [-1.8, 0.6, 0],

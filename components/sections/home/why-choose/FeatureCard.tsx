@@ -10,14 +10,10 @@ import {
   BadgeDollarSign,
 } from "lucide-react";
 
+import type { FeatureIcon } from "./data";
+
 interface FeatureCardProps {
-  icon:
-    | "shield"
-    | "zap"
-    | "globe"
-    | "map"
-    | "headset"
-    | "badge";
+  icon: FeatureIcon;
   title: string;
   description: string;
   index?: number;
@@ -67,7 +63,6 @@ export default function FeatureCard({
       }}
       className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:border-[#0E9AA7]/20 hover:shadow-2xl"
     >
-      {/* Icon */}
       <motion.div
         whileHover={{
           rotate: 12,
@@ -81,12 +76,10 @@ export default function FeatureCard({
         <Icon className="h-8 w-8 text-[#0E9AA7]" />
       </motion.div>
 
-      {/* Title */}
       <h3 className="mb-3 text-2xl font-bold text-slate-900">
         {title}
       </h3>
 
-      {/* Description */}
       <p className="leading-7 text-slate-500">
         {description}
       </p>

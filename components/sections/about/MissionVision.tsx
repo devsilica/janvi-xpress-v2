@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Container, Section } from "@/components/ui";
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -14,7 +14,7 @@ const cardVariants = {
     transition: {
       delay: i * 0.2,
       duration: 0.7,
-      ease: "easeOut",
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };

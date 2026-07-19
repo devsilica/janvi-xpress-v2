@@ -1,4 +1,18 @@
-export const services = [
+export type ServiceIcon =
+  | "plane"
+  | "ship"
+  | "globe"
+  | "warehouse"
+  | "shopping"
+  | "shield";
+
+export interface Service {
+  icon: ServiceIcon;
+  title: string;
+  description: string;
+}
+
+export const services: Service[] = [
   {
     icon: "plane",
     title: "Air Cargo",

@@ -1,4 +1,17 @@
-export const stats = [
+export type StatIcon =
+  | "globe"
+  | "package"
+  | "clock"
+  | "shield";
+
+export interface Stat {
+  icon: StatIcon;
+  value: string;
+  title: string;
+  description: string;
+}
+
+export const stats: Stat[] = [
   {
     icon: "globe",
     value: "120+",

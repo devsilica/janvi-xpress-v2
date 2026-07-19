@@ -8,8 +8,10 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+import type { StatIcon } from "./data";
+
 interface Props {
-  icon: "globe" | "package" | "clock" | "shield";
+  icon: StatIcon;
   value: string;
   title: string;
   description: string;

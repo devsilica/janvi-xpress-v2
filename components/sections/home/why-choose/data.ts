@@ -1,4 +1,18 @@
-export const features = [
+export type FeatureIcon =
+  | "shield"
+  | "zap"
+  | "globe"
+  | "map"
+  | "headset"
+  | "badge";
+
+export interface Feature {
+  icon: FeatureIcon;
+  title: string;
+  description: string;
+}
+
+export const features: Feature[] = [
   {
     icon: "shield",
     title: "Secure Cargo Handling",
