@@ -152,21 +152,29 @@ const data = {
     /* ---------------------------
        SUPABASE INSERT
 --------------------------- */
-    const { error } = await supabase
-      .from("shipping_requests")
-      .insert({
-        ...data,
-        status: "Pending"
-      });
+console.log("DATA TO INSERT:", data);
 
-    if (error) {
-      console.error("SUPABASE ERROR:", error);
+const { data: insertedRow, error } = await supabase
+  .from("shipping_requests")
+  .insert({
+    ...data,
+    status: "Pending",
+  })
+  .select();
 
-      return NextResponse.json(
-        { error: "Database insert failed" },
-        { status: 500 }
-      );
-    }
+console.log("INSERTED ROW:", insertedRow);
+console.log("SUPABASE ERROR:", error);
+
+if (error) {
+  return NextResponse.json(
+    {
+      error: "Database insert failed",
+      details: error.message,
+      code: error.code,
+    },
+    { status: 500 }
+  );
+}
 
     /* ---------------------------
        SUCCESS RESPONSE
