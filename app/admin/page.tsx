@@ -203,26 +203,18 @@ return okStatus && okQ;
 }, [requests, q, filter]);
 
 async function refresh() {
-  setErr(null);
+setErr(null);
+const { data, error } = await supabase
+.from("shipping_requests")
+.select("id,full_name,phone,pickup_location,destination_country,package_type,status,reference_code,created_at")
+.order("created_at", { ascending: false });
 
-  const { data, error } = await supabase
-    .from("shipping_requests")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  console.log("========== REFRESH ==========");
-  console.log("Data:", data);
-  console.log("Count:", data?.length);
-  console.log("Error:", error);
-
-  if (error) {
-    setErr(error.message);
-    return;
-  }
-
-  setRequests((data ?? []) as ShippingRequest[]);
+if (error) {
+setErr(error.message);
+return;
 }
-
+setRequests((data ?? []) as ShippingRequest[]);
+}
 
 async function updateStatus(id: string, status: string) {
 setRequests((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
