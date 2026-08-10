@@ -7,20 +7,20 @@ const supabase = createClient(
 );
 
 export async function requireAdmin() {
-
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) {
     redirect("/login");
   }
 
-  // Only allow specific admin email(s)
-  const admins = [
-    "hadekunleadeniyi27@gmail.com",
-    "ayodimejitaiwo12@gmail.com"
-  ];
+  const admins = (process.env.ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
 
-  if (!admins.includes(user.email ?? "")) {
+  if (!admins.includes((user.email ?? "").toLowerCase())) {
     redirect("/");
   }
 
