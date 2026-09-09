@@ -131,7 +131,7 @@ public/
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/janvi-xpress-v2.git
+git clone https://github.com/devsilica/janvi-xpress-v2.git
 ```
 
 Move into the project
